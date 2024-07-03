@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+
+    #validation{
+        color: aliceblue;
+    }
+
+         .h1 {
+            position: absolute;
+            top: 10px;
+            color: aliceblue;
+            left: 10px;
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .h1 span{
+            color: orange;
+        }
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .tr {
+            color: green;
+        }
+        .fl {
+            color: red;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 300px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="h1"><span>K</span>irikisanso</h1>
+    <div class="container">
+        <p id="validation">write your email<br> (проверь свой email)</p>
+        <input type="text" id="email" oninput="validationEmail(event)" placeholder="write your email">
+        <button onclick="validateEmail()">Check Email</button>
+    </div>
+    
+    <script>
+        function validationEmail(event) {
+            let p = document.getElementById("validation");
+            let value = event.target.value;
+            const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+            re.test(value) 
+            ? p.innerHTML = "<span class='tr'>You are right, well done :)</span>"
+            : p.innerHTML = "<span class='fl'>Wrong, try harder!!!</span>";
+        }
+
+        function validateEmail() {
+            let emailInput = document.getElementById("email");
+            let event = { target: emailInput };
+            validationEmail(event);
+        }
+    </script>
+</body>
+</html>
